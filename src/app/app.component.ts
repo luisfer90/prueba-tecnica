@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { TicketService } from './core/ticket.service'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'prueba-tecnica';
+
+  constructor(private ticketService: TicketService ) {
+    
+  }
+  ngOnInit() {
+    this.ticketService.getTickets().subscribe(response => {
+      console.log(response);
+    });
+  }
 }
