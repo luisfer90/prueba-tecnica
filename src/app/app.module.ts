@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { TicketListComponent } from './modules/ticket-list/ticket-list.component';
@@ -37,7 +38,8 @@ import { MatIconModule } from '@angular/material/icon';
   providers: [
     provideAnimationsAsync(),
     provideHttpClient(withInterceptorsFromDi()),
-    DatePipe // Proveedor de DatePipe para formatear fechas
+    DatePipe, 
+    { provide: MAT_DIALOG_DATA, useValue: {} }
   ],
   bootstrap: [AppComponent]
 })
