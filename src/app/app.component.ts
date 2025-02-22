@@ -1,19 +1,21 @@
 import { Component } from '@angular/core';
-import { TicketService } from './core/ticket.service'
+import { Ticket } from './core/models/ticket.model';
+
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
   standalone: false,
-  styleUrl: './app.component.scss'
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  selectedTicket: Ticket | null = null;
 
-  constructor(private ticketService: TicketService ) {
-    
+  // Recibe un Ticket en lugar de solo un ID
+  onSelectTicket(ticket: Ticket) {
+    this.selectedTicket = ticket;
   }
-  ngOnInit() {
-    this.ticketService.getTickets().subscribe(response => {
-      console.log(response);
-    });
+
+  refreshTickets() {
+    this.selectedTicket = null; // Opcionalmente, resetear el ticket seleccionado
   }
 }

@@ -1,0 +1,12 @@
+<div class="container">
+    <h1>Gestión de Tickets</h1>
+  
+    <!-- Lista de Tickets -->
+    <app-ticket-list (selectTicket)="onSelectTicket($event)"></app-ticket-list>
+  
+    <!-- Formulario para Crear/Editar Tickets -->
+    <app-ticket-form></app-ticket-form>
+  
+    <!-- Detalles del Ticket -->
+    <app-ticket-detail ></app-ticket-detail>
+</div>
