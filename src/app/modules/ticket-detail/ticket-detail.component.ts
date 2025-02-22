@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Ticket } from '../../core/models/ticket.model';
 
 @Component({
   selector: 'app-ticket-detail',
@@ -7,5 +9,6 @@ import { Component } from '@angular/core';
   styleUrl: './ticket-detail.component.scss'
 })
 export class TicketDetailComponent {
-
+  @Input() ticket: Ticket | null = null;
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Ticket) {}
 }

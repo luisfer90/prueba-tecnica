@@ -6,4 +6,5 @@ export interface Ticket {
     priority: 'low' | 'medium' | 'high'; // Definiendo prioridades
     createdAt?: string; // Fecha opcional (generalmente proporcionada por el backend)
     updatedAt?: string; // Fecha opcional
+    publishedAt?: string; // Fecha opcional
   }
