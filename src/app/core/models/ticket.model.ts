@@ -2,7 +2,7 @@ export interface Ticket {
     id: number;
     title: string;
     description: string;
-    status: 'open' | 'in-progress' | 'closed'; 
+    status: 'Disponible' | 'Preventa' | 'Vendido'; 
     active: boolean;
     archived: boolean;
     createdAt: string; 

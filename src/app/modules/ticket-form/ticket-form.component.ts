@@ -14,7 +14,7 @@ export class TicketFormComponent {
     id: 0,
     title: '',
     description: '',
-    status: 'open',
+    status: 'Disponible',
     active: true,
     archived: false,
     publishedAt: '',

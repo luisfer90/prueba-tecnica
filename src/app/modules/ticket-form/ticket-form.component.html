@@ -15,8 +15,9 @@
     <mat-form-field class="full-width">
         <mat-label>Estado</mat-label>
         <mat-select [(ngModel)]="ticket.status" name="status" required>
-          <mat-option value="open">Abierto</mat-option>
-          <mat-option value="closed">Cerrado</mat-option>
+          <mat-option value="Disponible">Abierto</mat-option>
+          <mat-option value="Preventa">Abierto</mat-option>
+          <mat-option value="Vendido">Cerrado</mat-option>
         </mat-select>
       </mat-form-field>
 
