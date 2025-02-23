@@ -1,0 +1,39 @@
+.title {
+    text-align: center;
+}
+
+.status-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon-green {
+    color: green;
+    vertical-align: middle;
+}
+
+.icon-red {
+    color: red;
+    vertical-align: middle;
+}
+
+.mr-5 {
+    margin-right: 5px;
+}
+
+/* Responsive: rompe las columnas en los campos activo y archivado */
+@media (max-width: 290px) {
+    .status-container {
+        flex-direction: column;
+        gap: 0px;
+    }
+}

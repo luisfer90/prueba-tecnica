@@ -1,10 +1,10 @@
 export interface Ticket {
-    id?: number; // Opcional para la creación de nuevos tickets
     title: string;
     description: string;
-    status: 'open' | 'in-progress' | 'closed'; // Ejemplo de estados válidos
-    priority: 'low' | 'medium' | 'high'; // Definiendo prioridades
-    createdAt?: string; // Fecha opcional (generalmente proporcionada por el backend)
-    updatedAt?: string; // Fecha opcional
-    publishedAt?: string; // Fecha opcional
+    status: 'open' | 'in-progress' | 'closed'; 
+    active: boolean;
+    archived: boolean;
+    createdAt: string; 
+    updatedAt: string;
+    publishedAt: string;
   }

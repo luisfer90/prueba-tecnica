@@ -1,11 +1,31 @@
-<h2 mat-dialog-title>Detalles del Ticket</h2>
+<h2 mat-dialog-title class="title">Detalles del Ticket</h2>
+
 <mat-dialog-content>
+  <div class="status-container">
+    <div class="status-item">
+      <p><strong class="mr-5">Activo:</strong>
+        <mat-icon class="icon-green" *ngIf="data.active">check_circle</mat-icon>
+        <mat-icon class="icon-red" *ngIf="!data.active">cancel</mat-icon>
+      </p>
+    </div>
+
+    <div class="status-item">
+      <p><strong class="mr-5">Archivado:</strong>
+        <mat-icon class="icon-green" *ngIf="data.archived">check_circle</mat-icon>
+        <mat-icon class="icon-red" *ngIf="!data.archived">cancel</mat-icon>
+      </p>
+    </div>
+  </div>
+
+  <!-- Información del Ticket -->
   <p><strong>Título:</strong> {{ data.title }}</p>
   <p><strong>Descripción:</strong> {{ data.description }}</p>
   <p><strong>Estado:</strong> {{ data.status }}</p>
-  <p><strong>Prioridad:</strong> {{ data.priority }}</p>
+  <p><strong>Fecha de Creación:</strong> {{ data.createdAt }}</p>
+  <p><strong>Última Actualización:</strong> {{ data.updatedAt }}</p>
   <p><strong>Fecha de Publicación:</strong> {{ data.publishedAt }}</p>
 </mat-dialog-content>
+
 <mat-dialog-actions>
   <button mat-button mat-dialog-close>Cerrar</button>
 </mat-dialog-actions>

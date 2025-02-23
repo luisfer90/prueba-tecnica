@@ -43,12 +43,14 @@ export class TicketListComponent implements OnInit {
   loadTickets(): void {
     this.ticketService.getTickets().subscribe(response => {
       this.tickets = response.data.map((t: any) => ({
-        id: t.id,
         title: t.attributes.title,
         description: t.attributes.description,
         status: t.attributes.status,
-        priority: t.attributes.priority,
-        publishedAt: this.datePipe.transform(t.attributes.publishedAt, 'MM/dd/yyyy HH:mm') || undefined // Formateo de fecha
+        active: t.attributes.active,
+        archived: t.attributes.archived,
+        createdAt: this.datePipe.transform(t.attributes.createdAt, 'MM/dd/yyyy HH:mm') || '',
+        updatedAt: this.datePipe.transform(t.attributes.updatedAt, 'MM/dd/yyyy HH:mm') || '',
+        publishedAt: this.datePipe.transform(t.attributes.publishedAt, 'MM/dd/yyyy HH:mm') || ''
       }));
       this.dataSource.data = this.tickets; // Actualiza la fuente de datos de la tabla
     });
