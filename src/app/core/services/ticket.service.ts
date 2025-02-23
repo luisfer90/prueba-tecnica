@@ -34,7 +34,7 @@ export class TicketService {
     });
   }
 
-  updateTicket(id: number, ticketData: Ticket): Observable<ApiResponse<Ticket>> {
+  updateTicket(id: number, ticketData: object): Observable<ApiResponse<Ticket>> {
     return this.http.put<ApiResponse<Ticket>>(`${this.apiUrl}/${id}`, { data: ticketData }, {
       headers: { 
         Authorization: `Bearer ${this.authToken}`,

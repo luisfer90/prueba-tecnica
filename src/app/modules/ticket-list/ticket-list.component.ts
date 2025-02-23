@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { DatePipe } from '@angular/common';
 import { TicketDetailComponent } from '../ticket-detail/ticket-detail.component'; // Importar el componente del modal
+import { TicketFormComponent } from '../ticket-form/ticket-form.component'; // Importar ticket-form
 
 @Component({
   selector: 'app-ticket-list',
@@ -43,6 +44,7 @@ export class TicketListComponent implements OnInit {
   loadTickets(): void {
     this.ticketService.getTickets().subscribe(response => {
       this.tickets = response.data.map((t: any) => ({
+        id: t.id,
         title: t.attributes.title,
         description: t.attributes.description,
         status: t.attributes.status,
@@ -63,6 +65,23 @@ export class TicketListComponent implements OnInit {
     this.dialog.open(TicketDetailComponent, {
       width: '400px',
       data: ticket // Pasa el ticket como datos al modal
+    });
+  }
+
+  editTicket(ticket: Ticket): void {
+    this.selectTicket.emit(ticket);
+
+    // Abrir el modal con el formulario de edición
+    this.dialog.open(TicketFormComponent, {
+      width: '500px',
+      data: { ticket, isEditMode: true } // Pasa el ticket y un indicador para modo edición
+    });
+  }
+
+  createTicket(): void {
+    this.dialog.open(TicketFormComponent, {
+      width: '500px',
+      data: { isEditMode: false } // Solo habilitar la creación
     });
   }
 }

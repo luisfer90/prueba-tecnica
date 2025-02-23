@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>{{ data.isEditMode ? 'Editar Ticket' : 'Crear Nuevo Ticket' }}</h2>
+
+<mat-dialog-content>
+  <form #ticketForm="ngForm" (ngSubmit)="onSubmit(ticketForm)">
+    <mat-form-field class="full-width">
+      <mat-label>Título</mat-label>
+      <input matInput [(ngModel)]="ticket.title" name="title" required />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput [(ngModel)]="ticket.description" name="description" required></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+        <mat-label>Estado</mat-label>
+        <mat-select [(ngModel)]="ticket.status" name="status" required>
+          <mat-option value="open">Abierto</mat-option>
+          <mat-option value="closed">Cerrado</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-checkbox [(ngModel)]="ticket.active" name="active">Activo</mat-checkbox>
+      <mat-checkbox [(ngModel)]="ticket.archived" name="archived">Archivado</mat-checkbox>
+
+    <mat-form-field class="full-width">
+      <mat-label>Fecha de Publicación</mat-label>
+      <input matInput [(ngModel)]="ticket.publishedAt" name="publishedAt" required />
+    </mat-form-field>
+
+    <div mat-dialog-actions>
+      <button mat-button mat-dialog-close>Cancelar</button>
+      <button mat-button type="submit">{{ data.isEditMode ? 'Guardar Cambios' : 'Crear Ticket' }}</button>
+    </div>
+  </form>
+</mat-dialog-content>
