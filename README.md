@@ -1,59 +1,106 @@
-# PruebaTecnica
+# Prueba Técnica - Ticket Management App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.7.
+## Overview
+This is an Angular 19.1 application designed to manage event tickets. It provides CRUD operations to create, update, and list tickets, interacting with a backend API hosted on Strapi.
 
-## Development server
+## Features
+- Fetch tickets from a Strapi API
+- Create, update, and archive tickets
+- Display ticket details in a table format
+- Utilizes Angular Material for UI components
+- Uses JWT authentication for secure API requests
 
-To start a local development server, run:
+## Installation
 
-```bash
-ng serve
+### Prerequisites
+Ensure you have the following installed on your system:
+- [Node.js](https://nodejs.org/) (version 18 or later recommended)
+- [Angular CLI](https://angular.io/cli) (version 19.1.7 recommended)
+
+### Steps
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-repository-url.git
+   cd your-repository-folder
+   ```
+
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+
+3. Run the development server:
+   ```sh
+   ng serve
+   ```
+
+4. Open `http://localhost:4200/` in your browser.
+
+## API Endpoints
+The application interacts with the following endpoints:
+
+### Get all tickets
+```
+GET https://essential-vacation-6ff9a7193e.strapiapp.com/api/prueba-tecnica-tickets
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+### Get a specific ticket by ID
+```
+GET https://essential-vacation-6ff9a7193e.strapiapp.com/api/prueba-tecnica-tickets/{id}
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
+### Create a new ticket
+```
+POST https://essential-vacation-6ff9a7193e.strapiapp.com/api/prueba-tecnica-tickets
+```
+**Body:**
+```json
+{
+  "data": {
+    "title": "Boleto concierto Coldplay",
+    "description": "Boleto concierto Coldplay, 15 de septiembre 2024, CDMX",
+    "status": "Disponible",
+    "active": true,
+    "archived": false
+  }
+}
 ```
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
+### Update a ticket
+```
+PUT https://essential-vacation-6ff9a7193e.strapiapp.com/api/prueba-tecnica-tickets/{id}
+```
+**Body:**
+```json
+{
+  "data": {
+    "title": "Updated Ticket Title",
+    "description": "Updated description",
+    "status": "Sold",
+    "active": false,
+    "archived": true
+  }
+}
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
+## Upgrading Angular to Version 19.1
+If you have an older version of Angular installed, update it by running:
+```sh
+ng update @angular/core @angular/cli
+```
+To update all dependencies automatically:
+```sh
+ng update
 ```
 
-## Running end-to-end tests
+## Documentation
+- [Angular Documentation](https://angular.io/docs)
+- [Strapi API Reference](https://docs.strapi.io)
+- [RxJS Operators](https://rxjs.dev/guide/operators)
 
-For end-to-end (e2e) testing, run:
+## Contributing
+Feel free to submit issues or pull requests to improve this project.
 
-```bash
-ng e2e
-```
+## License
+This project is licensed under the MIT License.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
