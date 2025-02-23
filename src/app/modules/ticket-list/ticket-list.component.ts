@@ -48,9 +48,9 @@ export class TicketListComponent implements OnInit {
         status: t.attributes.status,
         active: t.attributes.active,
         archived: t.attributes.archived,
-        createdAt: this.datePipe.transform(t.attributes.createdAt, 'MM/dd/yyyy HH:mm') || '',
-        updatedAt: this.datePipe.transform(t.attributes.updatedAt, 'MM/dd/yyyy HH:mm') || '',
-        publishedAt: this.datePipe.transform(t.attributes.publishedAt, 'MM/dd/yyyy HH:mm') || ''
+        createdAt: this.datePipe.transform(t.attributes.createdAt, 'dd/MM/yyyy HH:mm') || '',
+        updatedAt: this.datePipe.transform(t.attributes.updatedAt, 'dd/MM/yyyy HH:mm') || '',
+        publishedAt: this.datePipe.transform(t.attributes.publishedAt, 'dd/MM/yyyy HH:mm') || ''
       }));
       // Save the tickets in the dataSource of the table
       this.dataSource.data = this.tickets;
