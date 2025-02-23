@@ -1,4 +1,4 @@
-# Prueba Técnica - Ticket Management App
+# Technical Test - Ticket Management App
 
 ## Overview
 This is an Angular 19.1 application designed to manage event tickets. It provides CRUD operations to create, update, and list tickets, interacting with a backend API hosted on Strapi.
