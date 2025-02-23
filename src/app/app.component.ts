@@ -5,7 +5,7 @@ import { Ticket } from './core/models/ticket.model';
   selector: 'app-root',
   standalone: false,
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   selectedTicket: Ticket | null = null;
