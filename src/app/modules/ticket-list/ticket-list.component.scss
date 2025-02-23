@@ -34,6 +34,15 @@ button {
   transition: background-color 0.3s ease; /* Transición suave para el hover */
 }
 
+.btn-create-ticket {
+  padding: 7px;
+  font-size: 17px;
+  margin-right: 16px;
+}
+.align-right {
+  text-align: right;
+}
+
 .space-evenly {
   display: flex;
   justify-content: space-evenly;

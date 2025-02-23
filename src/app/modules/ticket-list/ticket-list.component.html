@@ -1,6 +1,11 @@
 <div class="ticket-list">
   <h2>Lista de Tickets</h2>
-
+  <div class="align-right">
+    <button class="btn-create-ticket" (click)="createTicket()">
+      <a>Crear Ticket</a>
+    </button>
+  </div>
+  
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <!-- Columna de título -->
     <ng-container matColumnDef="title">

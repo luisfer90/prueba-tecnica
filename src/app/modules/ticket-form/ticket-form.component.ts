@@ -36,20 +36,23 @@ export class TicketFormComponent {
 
   onSubmit(form: any): void {
     if (form.valid) {
+      const ticketData = {
+        title: this.ticket.title,
+        description: this.ticket.description,
+        status: this.ticket.status,
+        active: this.ticket.active,
+        archived: this.ticket.archived
+      }
       if (this.data.isEditMode) {
-        const ticketData = {
-          title: this.ticket.title,
-          description: this.ticket.description,
-          status: this.ticket.status,
-          active: this.ticket.active,
-          archived: this.ticket.archived
+        if (this.ticket.id != undefined) {
+          this.ticketService.updateTicket(this.ticket.id, ticketData).subscribe(() => {
+            this.ticketUpdated.emit();
+            this.dialogRef.close();
+          });
         }
-        this.ticketService.updateTicket(this.ticket.id, ticketData).subscribe(() => {
-          this.ticketUpdated.emit();
-          this.dialogRef.close();
-        });
       } else {
-        this.ticketService.createTicket(this.ticket).subscribe(() => {
+
+        this.ticketService.createTicket(ticketData).subscribe(() => {
           this.ticketUpdated.emit();
           this.dialogRef.close();
         });
