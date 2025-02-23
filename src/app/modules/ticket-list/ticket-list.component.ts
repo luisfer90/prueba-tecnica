@@ -7,6 +7,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { DatePipe } from '@angular/common';
 import { TicketDetailComponent } from '../ticket-detail/ticket-detail.component';
 import { TicketFormComponent } from '../ticket-form/ticket-form.component';
+import { LoadingService } from '../../core/services/loading.service';
 
 @Component({
   selector: 'app-ticket-list',
@@ -24,7 +25,8 @@ export class TicketListComponent implements OnInit {
   constructor(
     private ticketService: TicketService,
     private datePipe: DatePipe,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private loadingService: LoadingService
   ) {
     this.dataSource = new MatTableDataSource(this.tickets);
   }
@@ -40,21 +42,34 @@ export class TicketListComponent implements OnInit {
   }
 
   loadTickets(): void {
-    this.ticketService.getTickets().subscribe(response => {
-      this.tickets = response.data.map((t: any) => ({
-        id: t.id,
-        title: t.attributes.title,
-        description: t.attributes.description,
-        status: t.attributes.status,
-        active: t.attributes.active,
-        archived: t.attributes.archived,
-        createdAt: this.datePipe.transform(t.attributes.createdAt, 'dd/MM/yyyy HH:mm') || '',
-        updatedAt: this.datePipe.transform(t.attributes.updatedAt, 'dd/MM/yyyy HH:mm') || '',
-        publishedAt: this.datePipe.transform(t.attributes.publishedAt, 'dd/MM/yyyy HH:mm') || ''
-      }));
-      // Save the tickets in the dataSource of the table
-      this.dataSource.data = this.tickets;
-    });
+    this.loadingService.showLoading();
+  
+    this.ticketService.getTickets().subscribe(
+      response => {
+        this.tickets = response.data.map((t: any) => ({
+          id: t.id,
+          title: t.attributes.title,
+          description: t.attributes.description,
+          status: t.attributes.status,
+          active: t.attributes.active,
+          archived: t.attributes.archived,
+          createdAt: this.datePipe.transform(t.attributes.createdAt, 'dd/MM/yyyy HH:mm') || '',
+          updatedAt: this.datePipe.transform(t.attributes.updatedAt, 'dd/MM/yyyy HH:mm') || '',
+          publishedAt: this.datePipe.transform(t.attributes.publishedAt, 'dd/MM/yyyy HH:mm') || ''
+        }));
+  
+        // Guarda los tickets en el dataSource de la tabla
+        this.dataSource.data = this.tickets;
+      },
+      error => {
+        console.error('Error al cargar los tickets:', error);
+        alert('Ocurrió un error al cargar los tickets. Inténtalo de nuevo.');
+      },
+      () => {
+        // En cualquier caso, sea éxito o error, ocultamos el loading
+        this.loadingService.hideLoading();
+      }
+    );
   }
 
   viewDetails(ticket: Ticket): void {

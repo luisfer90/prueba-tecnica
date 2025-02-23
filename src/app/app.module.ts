@@ -21,13 +21,15 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { LoadingComponent } from './modules/_shared/loading/loading.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TicketListComponent,
     TicketDetailComponent,
-    TicketFormComponent
+    TicketFormComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

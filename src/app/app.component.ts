@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Ticket } from './core/models/ticket.model';
+import { LoadingService } from './core/services/loading.service';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,12 @@ import { Ticket } from './core/models/ticket.model';
 })
 export class AppComponent {
   selectedTicket: Ticket | null = null;
+
+  constructor(private loadingService: LoadingService) {}
+
+  ngOnInit() {
+    this.loadingService.showLoading();
+  }
 
   onSelectTicket(ticket: Ticket) {
     this.selectedTicket = ticket;
