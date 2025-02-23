@@ -3,7 +3,7 @@
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agrega sombra para un toque más moderno */
-  margin-bottom: 20px;
+  margin: 0px 10px 20px 10px;
 }
 
 h2 {
@@ -15,6 +15,14 @@ h2 {
 table {
   width: 100%;
   border-collapse: collapse; /* Elimina el espacio entre celdas */
+}
+td, th {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+.mat-sort-header-container {
+  justify-content: center !important;
 }
 
 button {
@@ -38,4 +46,17 @@ button:hover {
 
 button mat-icon {
   color: white; /* Asegura que los iconos sean blancos */
+}
+
+.mat-mdc-cell{
+  border-bottom-color: var(--mat-table-row-item-outline-color, #bdcdf7);
+
+}
+
+.mat-mdc-header-cell{
+  border-bottom-color: var(--mat-table-row-item-outline-color, #bdcdf7);
+}
+
+.mat-mdc-header-row {
+  color: #002ee7;
 }
