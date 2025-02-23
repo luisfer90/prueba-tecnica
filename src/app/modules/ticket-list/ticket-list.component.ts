@@ -70,8 +70,8 @@ export class TicketListComponent implements OnInit {
       data: { ticket, isEditMode: true }
     });
 
+    // Cuando se emite el evento 'ticketUpdated', recargamos la lista de tickets
     dialogRef.componentInstance.ticketUpdated.subscribe(() => {
-      // Cuando se emite el evento 'ticketUpdated', recargamos la lista de tickets
       this.loadTickets();
     });
   }
@@ -82,8 +82,8 @@ export class TicketListComponent implements OnInit {
       data: { isEditMode: false }
     });
 
+    // Recargamos la lista de tickets cuando se crea un nuevo ticket
     dialogRef.componentInstance.ticketUpdated.subscribe(() => {
-      // Recargamos la lista de tickets cuando se crea un nuevo ticket
       this.loadTickets();
     });
   }
