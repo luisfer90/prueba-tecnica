@@ -5,8 +5,8 @@ import { Ticket } from '../../core/models/ticket.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { DatePipe } from '@angular/common';
-import { TicketDetailComponent } from '../ticket-detail/ticket-detail.component'; // Importar el componente del modal
-import { TicketFormComponent } from '../ticket-form/ticket-form.component'; // Importar ticket-form
+import { TicketDetailComponent } from '../ticket-detail/ticket-detail.component';
+import { TicketFormComponent } from '../ticket-form/ticket-form.component';
 
 @Component({
   selector: 'app-ticket-list',
@@ -17,7 +17,7 @@ import { TicketFormComponent } from '../ticket-form/ticket-form.component'; // I
 export class TicketListComponent implements OnInit {
   tickets: Ticket[] = [];
   dataSource: MatTableDataSource<Ticket>;
-  displayedColumns: string[] = ['title', 'status', 'priority', 'actions']; // Columnas que se mostrarán en la tabla
+  displayedColumns: string[] = ['title', 'status', 'publishedAt', 'actions'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
 
@@ -26,7 +26,7 @@ export class TicketListComponent implements OnInit {
   constructor(
     private ticketService: TicketService,
     private datePipe: DatePipe,
-    private dialog: MatDialog // Inyectar MatDialog
+    private dialog: MatDialog
   ) {
     this.dataSource = new MatTableDataSource(this.tickets);
   }
@@ -54,17 +54,16 @@ export class TicketListComponent implements OnInit {
         updatedAt: this.datePipe.transform(t.attributes.updatedAt, 'MM/dd/yyyy HH:mm') || '',
         publishedAt: this.datePipe.transform(t.attributes.publishedAt, 'MM/dd/yyyy HH:mm') || ''
       }));
-      this.dataSource.data = this.tickets; // Actualiza la fuente de datos de la tabla
+      // Save the tickets in the dataSource of the table
+      this.dataSource.data = this.tickets;
     });
   }
 
   viewDetails(ticket: Ticket): void {
     this.selectTicket.emit(ticket);
-
-    // Abrir el modal con los detalles del ticket
     this.dialog.open(TicketDetailComponent, {
       width: '400px',
-      data: ticket // Pasa el ticket como datos al modal
+      data: ticket
     });
   }
 
@@ -81,7 +80,7 @@ export class TicketListComponent implements OnInit {
   createTicket(): void {
     this.dialog.open(TicketFormComponent, {
       width: '500px',
-      data: { isEditMode: false } // Solo habilitar la creación
+      data: { isEditMode: false }
     });
   }
 }
