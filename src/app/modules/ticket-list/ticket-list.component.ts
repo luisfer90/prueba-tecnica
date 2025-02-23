@@ -21,8 +21,6 @@ export class TicketListComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
 
-  @Output() selectTicket = new EventEmitter<Ticket>(); 
-
   constructor(
     private ticketService: TicketService,
     private datePipe: DatePipe,
@@ -60,7 +58,6 @@ export class TicketListComponent implements OnInit {
   }
 
   viewDetails(ticket: Ticket): void {
-    this.selectTicket.emit(ticket);
     this.dialog.open(TicketDetailComponent, {
       width: '400px',
       data: ticket
@@ -68,19 +65,26 @@ export class TicketListComponent implements OnInit {
   }
 
   editTicket(ticket: Ticket): void {
-    this.selectTicket.emit(ticket);
-
-    // Abrir el modal con el formulario de edición
-    this.dialog.open(TicketFormComponent, {
+    const dialogRef = this.dialog.open(TicketFormComponent, {
       width: '500px',
-      data: { ticket, isEditMode: true } // Pasa el ticket y un indicador para modo edición
+      data: { ticket, isEditMode: true }
+    });
+
+    dialogRef.componentInstance.ticketUpdated.subscribe(() => {
+      // Cuando se emite el evento 'ticketUpdated', recargamos la lista de tickets
+      this.loadTickets();
     });
   }
 
   createTicket(): void {
-    this.dialog.open(TicketFormComponent, {
+    const dialogRef = this.dialog.open(TicketFormComponent, {
       width: '500px',
       data: { isEditMode: false }
+    });
+
+    dialogRef.componentInstance.ticketUpdated.subscribe(() => {
+      // Recargamos la lista de tickets cuando se crea un nuevo ticket
+      this.loadTickets();
     });
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TicketService } from '../../core/services/ticket.service';
 import { Ticket } from '../../core/models/ticket.model';
@@ -22,6 +22,8 @@ export class TicketFormComponent {
     updatedAt: ''
   };
 
+  @Output() ticketUpdated = new EventEmitter<void>();
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { ticket: Ticket, isEditMode: boolean },
     private dialogRef: MatDialogRef<TicketFormComponent>,
@@ -33,7 +35,6 @@ export class TicketFormComponent {
   }
 
   onSubmit(form: any): void {
-    console.log(this.ticket)
     if (form.valid) {
       if (this.data.isEditMode) {
         const ticketData = {
@@ -44,10 +45,12 @@ export class TicketFormComponent {
           archived: this.ticket.archived
         }
         this.ticketService.updateTicket(this.ticket.id, ticketData).subscribe(() => {
+          this.ticketUpdated.emit();
           this.dialogRef.close();
         });
       } else {
         this.ticketService.createTicket(this.ticket).subscribe(() => {
+          this.ticketUpdated.emit();
           this.dialogRef.close();
         });
       }
