@@ -20,8 +20,8 @@ Ensure you have the following installed on your system:
 ### Steps
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-repository-url.git
-   cd your-repository-folder
+   git clone [https://github.com/your-repository-url.git](https://github.com/luisfer90/prueba-tecnica.git)
+   cd prueba-tecnica
    ```
 
 2. Install dependencies:
