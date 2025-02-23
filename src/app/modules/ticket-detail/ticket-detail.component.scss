@@ -30,7 +30,7 @@
     margin-right: 5px;
 }
 
-/* Responsive: rompe las columnas en los campos activo y archivado */
+/* Responsive: break columns on active and archived fields */
 @media (max-width: 290px) {
     .status-container {
         flex-direction: column;

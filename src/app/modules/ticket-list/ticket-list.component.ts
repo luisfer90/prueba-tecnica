@@ -58,7 +58,7 @@ export class TicketListComponent implements OnInit {
           publishedAt: this.datePipe.transform(t.attributes.publishedAt, 'dd/MM/yyyy HH:mm') || ''
         }));
   
-        // Guarda los tickets en el dataSource de la tabla
+        // Save the tickets in the dataSource of the table
         this.dataSource.data = this.tickets;
       },
       error => {
@@ -66,7 +66,7 @@ export class TicketListComponent implements OnInit {
         alert('Ocurrió un error al cargar los tickets. Inténtalo de nuevo.');
       },
       () => {
-        // En cualquier caso, sea éxito o error, ocultamos el loading
+        // In any case, whether success or failure, we hide the loading
         this.loadingService.hideLoading();
       }
     );
@@ -85,7 +85,7 @@ export class TicketListComponent implements OnInit {
       data: { ticket, isEditMode: true }
     });
 
-    // Cuando se emite el evento 'ticketUpdated', recargamos la lista de tickets
+    // When the 'ticketUpdated' event is emitted, we reload the ticket list
     dialogRef.componentInstance.ticketUpdated.subscribe(() => {
       this.loadTickets();
     });
@@ -97,7 +97,7 @@ export class TicketListComponent implements OnInit {
       data: { isEditMode: false }
     });
 
-    // Recargamos la lista de tickets cuando se crea un nuevo ticket
+    // We reload the ticket list when a new ticket is created
     dialogRef.componentInstance.ticketUpdated.subscribe(() => {
       this.loadTickets();
     });

@@ -30,7 +30,7 @@ export class TicketFormComponent {
     private ticketService: TicketService
   ) {
     if (data.isEditMode && data.ticket) {
-      this.ticket = { ...data.ticket }; // Si estamos editando, cargamos los datos del ticket
+      this.ticket = { ...data.ticket }; // If we are editing, we load the ticket data
     }
   }
 
