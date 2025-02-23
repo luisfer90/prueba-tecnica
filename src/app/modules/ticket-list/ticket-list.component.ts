@@ -12,7 +12,7 @@ import { TicketFormComponent } from '../ticket-form/ticket-form.component';
   selector: 'app-ticket-list',
   standalone: false,
   templateUrl: './ticket-list.component.html',
-  styleUrls: ['./ticket-list.component.css']
+  styleUrls: ['./ticket-list.component.scss']
 })
 export class TicketListComponent implements OnInit {
   tickets: Ticket[] = [];

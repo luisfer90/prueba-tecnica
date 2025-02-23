@@ -13,21 +13,18 @@
     </mat-form-field>
 
     <mat-form-field class="full-width">
-        <mat-label>Estado</mat-label>
-        <mat-select [(ngModel)]="ticket.status" name="status" required>
-          <mat-option value="Disponible">Abierto</mat-option>
-          <mat-option value="Preventa">Abierto</mat-option>
-          <mat-option value="Vendido">Cerrado</mat-option>
-        </mat-select>
-      </mat-form-field>
-
+      <mat-label>Estado</mat-label>
+      <mat-select [(ngModel)]="ticket.status" name="status" required>
+        <mat-option value="Disponible">Disponible</mat-option>
+        <mat-option value="Preventa">Preventa</mat-option>
+        <mat-option value="Vendido">Vendido</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="center">
       <mat-checkbox [(ngModel)]="ticket.active" name="active">Activo</mat-checkbox>
       <mat-checkbox [(ngModel)]="ticket.archived" name="archived">Archivado</mat-checkbox>
+    </div>
 
-    <mat-form-field class="full-width">
-      <mat-label>Fecha de Publicación</mat-label>
-      <input matInput [(ngModel)]="ticket.publishedAt" name="publishedAt" required />
-    </mat-form-field>
 
     <div mat-dialog-actions>
       <button mat-button mat-dialog-close>Cancelar</button>

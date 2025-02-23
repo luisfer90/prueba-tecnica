@@ -7,7 +7,7 @@ import { Ticket } from '../../core/models/ticket.model';
   selector: 'app-ticket-form',
   standalone: false,
   templateUrl: './ticket-form.component.html',
-  styleUrls: ['./ticket-form.component.css']
+  styleUrls: ['./ticket-form.component.scss']
 })
 export class TicketFormComponent {
   ticket: Ticket = {
